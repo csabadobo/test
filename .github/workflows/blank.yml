@@ -25,6 +25,9 @@ jobs:
           - name: Launch docker daemon
             run: sudo service docker start
             
+          - name: Docker Pull host
+            run: docker pull --add-host=host.docker.internal:host-gateway
+            
           - name: Docker Pull
             run: docker pull express-gateway
     
