@@ -22,12 +22,6 @@ jobs:
           - name: Install docker
             run: sudo apt -y update && sudo apt -y install docker
             
-          - name: ufw
-            run: sudo service ufw start
-            
-          - name: ctl
-            run: systemctl start docker
-            
           - name: Launch docker daemon
             run: sudo service docker start
             
@@ -35,5 +29,5 @@ jobs:
             run: docker pull express-gateway
     
           - name: Run the build process with Docker
-            run: docker run -d -p 3001:8000 express-gateway
+            run: docker run -d -p 3000:8080 express-gateway
 
