@@ -18,5 +18,15 @@ jobs:
     compile:
         name: Compile site assets
         runs-on: self hosted
-        container:
-            image: express-gateway
+        steps:
+          - name: Check out the repo
+            uses: actions/checkout@v2
+          - name: Run the build process with Docker
+            uses: addnab/docker-run-action@v3
+            with:
+                image: express-gateway:latest
+                options: -v ${{ github.workspace }}:/var/www
+                run: |
+                    composer install
+                    npm install
+                    npm run production
