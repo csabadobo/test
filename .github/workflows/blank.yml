@@ -20,7 +20,7 @@ jobs:
         runs-on: self-hosted
         steps:           
           - name: Docker Pull host
-            run: docker pull --add-host=host.docker.internal:host-gateway
+            run: docker exec -it --privileged myoung bash
             
           - name: Docker Pull
             run: docker pull express-gateway
