@@ -15,18 +15,18 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-    compile:
+  compile:
         name: Compile site assets
         runs-on: self-hosted
         steps:
-          - name: Check out the repo
-            uses: actions/checkout@v2
+          - name: Install docker
+            run: sudo apt -y update && sudo apt -y install docker
+            
+          - name: Launch docker daemon
+            run: sudo service docker start
+            
+          - name: Docker Pull
+            run: docker pull express-gateway
+    
           - name: Run the build process with Docker
-            uses: addnab/docker-run-action@v3
-            with:
-                image: express-gateway:latest
-                options: -v ${{ github.workspace }}:/var/www
-                run: |
-                    composer install
-                    npm install
-                    npm run production
+            run: docker run -d -p 3001:8000 express-gateway
