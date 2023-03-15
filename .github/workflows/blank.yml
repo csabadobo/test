@@ -23,7 +23,7 @@ jobs:
             run: sudo apt -y update && sudo apt -y install docker
             
           - name: Launch docker daemon
-            run: sudo service docker start
+            run: sudo service docker start && systemctl start docker
             
           - name: Docker Pull
             run: docker pull express-gateway
