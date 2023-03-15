@@ -15,19 +15,8 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  compile:
+    compile:
         name: Compile site assets
-        runs-on: self-hosted
-        steps:
-          - name: Install docker
-            run: sudo apt -y update && sudo apt -y install docker
-            
-          - name: Launch docker daemon
-            run: sudo service docker start
-            
-          - name: Docker Pull
-            run: docker pull express-gateway
-    
-          - name: Run the build process with Docker
-            run: docker run -d -p 3000:8080 express-gateway
-
+        runs-on: self hosted
+        container:
+            image: express-gateway
