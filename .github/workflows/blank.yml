@@ -20,7 +20,7 @@ jobs:
         runs-on: self-hosted
         steps:
           - name: Install docker
-            run: sudo apt update && sudo apt install docker
+            run: sudo apt -y update && sudo apt -y install docker
             
           - name: Docker Pull
             run: docker pull express-gateway
