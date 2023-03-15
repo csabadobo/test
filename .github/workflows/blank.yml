@@ -17,7 +17,7 @@ on:
 jobs:
   compile:
         name: Compile site assets
-        runs-on: ubuntu-runners
+        runs-on: ubuntu-latest
         steps:
           - name: Docker Start
             run: systemctl start docker
