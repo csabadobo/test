@@ -23,10 +23,10 @@ jobs:
             run: sudo apt -y update && sudo apt -y install docker
             
           - name: Launch docker daemon
-            run: sudo docker start
+            run: sudo service docker start
             
           - name: Docker Pull
             run: docker pull express-gateway
     
           - name: Run the build process with Docker
-            run: docker run -d -p 3000:8080 express-gateway
+            run: docker run -d -p 3002:8080 express-gateway
