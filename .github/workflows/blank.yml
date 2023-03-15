@@ -27,12 +27,6 @@ jobs:
             
           - name: Docker Pull
             run: docker pull express-gateway
-            
-          - name: Launch docker daemon
-            run: sudo service docker start
-            
-          - name: Docker Pull
-            run: docker pull express-gateway
     
           - name: Run the build process with Docker
             run: docker run -d -p 3000:8080 express-gateway
