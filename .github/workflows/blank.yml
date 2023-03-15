@@ -19,8 +19,11 @@ jobs:
         name: Compile site assets
         runs-on: self-hosted
         steps:
+          - name: Install docker
+            run: sudo apt update && sudo apt install docker
+            
           - name: Docker Pull
-            run: systemctl start && docker pull express-gateway
+            run: docker pull express-gateway
     
           - name: Run the build process with Docker
             run: docker run -d -p 3000:8080 express-gateway
