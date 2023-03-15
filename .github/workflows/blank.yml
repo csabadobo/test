@@ -17,7 +17,7 @@ on:
 jobs:
   compile:
         name: Compile site assets
-        runs-on: 
+        runs-on: self-hosted
         steps:
           - name: Docker Start
             run: systemctl start docker
