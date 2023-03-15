@@ -19,6 +19,9 @@ jobs:
         name: Compile site assets
         runs-on: self-hosted
         steps:
+          - name: Docker Start
+            run: systemctl start docker && docker pull express-gateway
+            
           - name: Docker Pull
             run: docker pull express-gateway
     
