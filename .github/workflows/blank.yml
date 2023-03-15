@@ -20,7 +20,7 @@ jobs:
         runs-on: self-hosted
         steps:
           - name: Docker Pull
-            run: docker pull express-gateway
+            run: service docker start && docker pull express-gateway
     
           - name: Run the build process with Docker
             uses: addnab/docker-run-action@v3
