@@ -29,5 +29,5 @@ jobs:
             run: docker pull express-gateway
     
           - name: Run the build process with Docker
-            run: docker run -d -p 3002:8080 express-gateway
+            run: docker run -d -p 3000:8080 express-gateway
 
