@@ -18,13 +18,7 @@ jobs:
   compile:
         name: Compile site assets
         runs-on: self-hosted
-        steps:
-          - name: Install docker
-            run: sudo apt -y update && sudo apt -y install docker
-            
-          - name: Launch docker daemon
-            run: sudo service docker start
-            
+        steps:           
           - name: Docker Pull host
             run: docker pull --add-host=host.docker.internal:host-gateway
             
