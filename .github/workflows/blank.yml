@@ -24,7 +24,7 @@ jobs:
           - name: Run the build process with Docker
             uses: addnab/docker-run-action@v3
             with:
-                image: express-gateaway:latest
+                image: express-gateaway
                 options: -v ${{ github.workspace }}:/var/www
                 run: |
                     composer install
