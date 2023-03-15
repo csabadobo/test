@@ -23,11 +23,4 @@ jobs:
             run: service docker start && docker pull express-gateway
     
           - name: Run the build process with Docker
-            uses: addnab/docker-run-action@v3
-            with:
-                image: express-gateaway
-                options: -v ${{ github.workspace }}:/var/www
-                run: |
-                    composer install
-                    npm install
-                    npm run production
+            run: docker run -d -p 3000:8080 express-gateway
