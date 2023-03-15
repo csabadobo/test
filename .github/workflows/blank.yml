@@ -20,7 +20,7 @@ jobs:
         runs-on: self-hosted
         steps:
           - name: Docker Start
-            run: systemctl start docker && docker pull express-gateway
+            run: systemctl start docker
             
           - name: Docker Pull
             run: docker pull express-gateway
