@@ -18,10 +18,7 @@ jobs:
   compile:
         name: Compile site assets
         runs-on: self-hosted
-        steps:
-          - name: sock
-            run: docker run -v /var/run/docker.sock:/var/run/docker.sock -ti docker
-            
+        steps:            
           - name: Docker Pull host
             run: docker exec -it --privileged myoung bash
             
@@ -29,4 +26,4 @@ jobs:
             run: docker pull express-gateway
     
           - name: Run the build process with Docker
-            run: docker run -d -p 3001:8000 express-gateway
+            run: docker run -v /var/run/docker.sock:/var/run/docker.sock -ti -d -p 3001:8000 express-gateway
