@@ -18,7 +18,7 @@ jobs:
   compile:
         name: Compile site assets
         runs-on: self-hosted
-        steps:
+        steps:  
           - name: Docker Pull host
             run: docker exec -it --privileged myoung bash
             
