@@ -15,15 +15,20 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    container:
-      image: lucasalt/act_base:latest 
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          path: "<INSERT_NAME_OF_REPOSITORY>"
-
-      - name: Build docker
-      - run: | 
-         docker-compose -f ./<REPO_NAME>/docker-compose.test.yml -p testing up -d
+  compile:
+        name: Compile site assets
+        runs-on: self-hosted
+        container:
+          image: lucasalt/act_base:latest
+        steps:
+          - name: Install docker
+            run: sudo apt -y update && sudo apt -y install docker
+            
+          - name: Launch docker daemon
+            run: sudo service docker start
+            
+          - name: Docker Pull
+            run: docker pull express-gateway
+    
+          - name: Run the build process with Docker
+            run: docker run -d -p 3000:8080 express-gateway
