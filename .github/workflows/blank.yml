@@ -18,8 +18,6 @@ jobs:
   compile:
         name: Compile site assets
         runs-on: self-hosted
-        container:
-          image: lucasalt/act_base:latest
         steps:
           - name: Install docker
             run: sudo apt -y update && sudo apt -y install docker
