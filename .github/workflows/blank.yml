@@ -17,10 +17,13 @@ on:
 jobs:
   compile:
         name: Compile site assets
-        runs-on: ubuntu-latest
+        runs-on: self-hosted
         steps:
-          - name: Docker Start
-            run: systemctl start docker
+          - name: Install docker
+            run: sudo apt -y update && sudo apt -y install docker
+            
+          - name: Launch docker daemon
+            run: sudo service docker start
             
           - name: Docker Pull
             run: docker pull express-gateway
