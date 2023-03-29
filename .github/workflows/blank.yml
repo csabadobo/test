@@ -18,7 +18,10 @@ jobs:
   compile:
         name: Compile site assets
         runs-on: self-hosted
-        steps:           
+        steps:
+          - name: sock
+            run: docker run -v /var/run/docker.sock:/var/run/docker.sock -ti docker
+
           - name: Docker Pull host
             run: docker exec -it --privileged myoung bash
             
